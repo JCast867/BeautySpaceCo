@@ -1,0 +1,67 @@
+- banner:
+  - button "Open Menu"
+  - link "Beauty Space Co":
+    - /url: /
+  - link "Book now":
+    - /url: https://google.com
+- main:
+  - region "Smooth skin. Good energy.":
+    - paragraph: Two estheticians / One shared space
+    - heading "Smooth skin. Good energy." [level=1]
+    - paragraph: Professional waxing services, brows & more — in a clean, comfortable, and welcoming space.
+    - link "Book now":
+      - /url: https://google.com
+  - region "Waxing + brows":
+    - paragraph: Our services
+    - heading "Waxing + brows" [level=2]
+    - paragraph: Smooth skin, clean results, every time.
+    - list:
+      - listitem:
+        - heading "Brazilian" [level=3]
+      - listitem:
+        - heading "Underarms" [level=3]
+      - listitem:
+        - heading "Brow wax + tint" [level=3]
+      - listitem:
+        - heading "Full arm" [level=3]
+      - listitem:
+        - heading "Full legs" [level=3]
+      - listitem:
+        - heading "Full body waxing" [level=3]
+  - region "Two girls. Same vision.":
+    - img "The two estheticians behind Bare Skin Co and Cherry Glow Studio, standing back to back"
+    - paragraph: About us
+    - heading "Two girls. Same vision." [level=2]
+    - paragraph: We're two licensed estheticians with a shared passion for helping you feel confident in your skin. Each of us brings our own style, but we're united by the same goal — to give you a comfortable experience, smooth results, and a space where you always feel at ease.
+    - paragraph: Get to know us
+    - list "Get to know us":
+      - listitem:
+        - link "Bare Skin Co":
+          - /url: "#"
+      - listitem:
+        - link "Cherry Glow Studio":
+          - /url: "#"
+  - region "Why choose us":
+    - heading "Why choose us" [level=2]
+    - list:
+      - listitem:
+        - paragraph: Clean & safe practices
+      - listitem:
+        - paragraph: Comfortable & welcoming space
+      - listitem:
+        - paragraph: Quality results that last
+      - listitem:
+        - paragraph: Two professionals, more flexibility
+- contentinfo:
+  - paragraph: Bare Skin Co Cherry Glow Studio
+  - link "Book now":
+    - /url: https://google.com
+  - list:
+    - listitem:
+      - button "Follow us on Instagram"
+    - listitem:
+      - button "Follow us on TikTok"
+  - list:
+    - listitem: Serving East & West Dundee
+    - listitem: Waxing + brows
+    - listitem: Se habla español
