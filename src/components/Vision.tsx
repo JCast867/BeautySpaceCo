@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 import visionSmall from "../assets/vision-640.webp";
 import visionMedium from "../assets/vision-960.webp";
 import visionLarge from "../assets/vision-1280.webp";
@@ -70,22 +72,22 @@ export function Vision() {
 						className="mt-2 flex items-center text-[clamp(1.125rem,6vw,1.75rem)] leading-none sm:text-4xl/none lg:text-[clamp(1.75rem,calc(4.5vw-1.125rem),2.25rem)]"
 					>
 						<li className="pr-3 font-birthstone sm:pr-5">
-							<a
-								href={meetLinks.bareSkinCo}
+							<Link
+								to={meetLinks.bareSkinCo}
 								className="group/name -my-1.5 inline-flex items-baseline gap-1.5 rounded-sm py-2.5 underline decoration-transparent decoration-1 underline-offset-10 transition-colors duration-300 ease-glide hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none sm:gap-2"
 							>
 								Bare Skin Co
 								<LinkArrow />
-							</a>
+							</Link>
 						</li>
 						<li className="border-l border-primary/30 pl-3 font-doulaise sm:pl-5">
-							<a
-								href={meetLinks.cherryGlowStudio}
+							<Link
+								to={meetLinks.cherryGlowStudio}
 								className="group/name -my-1.5 inline-flex items-baseline gap-1.5 rounded-sm py-2.5 underline decoration-transparent decoration-1 underline-offset-10 transition-colors duration-300 ease-glide hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none sm:gap-2"
 							>
 								Cherry Glow Studio
 								<LinkArrow />
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</div>
