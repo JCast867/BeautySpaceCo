@@ -1,0 +1,17 @@
+/* TEAM */
+    Solo Developer & Creator: Jaime Castaneda
+    LinkedIn: https://www.linkedin.com/in/jaimecast03/
+    Location: Woodstock, IL
+
+/* THANKS */
+    Open-source maintainers behind React, Vite, and Tailwind CSS
+    Testing & tooling communities behind Vitest and Playwright
+
+/* SITE */
+    Last update: 2026/11/22
+    Language: English / Spanish
+    Doctype: HTML5
+    Standards: TypeScript, Tailwind CSS
+    Components: React, Vite, Vitest, Playwright
+    IDE: VS Code
+    Hosting: Netlify
