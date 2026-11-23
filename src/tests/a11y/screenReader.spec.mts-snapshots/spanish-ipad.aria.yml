@@ -1,0 +1,82 @@
+- banner:
+  - navigation "Navegación principal":
+    - list:
+      - listitem:
+        - link "Inicio":
+          - /url: "#"
+      - listitem:
+        - link "Servicios":
+          - /url: "#services"
+      - listitem:
+        - link "Nosotros":
+          - /url: "#about"
+  - link "Beauty Space Co":
+    - /url: /
+  - list:
+    - listitem:
+      - button "Síguenos en Instagram"
+    - listitem:
+      - button "Síguenos en TikTok"
+  - link "Reservar cita":
+    - /url: https://google.com
+- main:
+  - region "Piel suave. Buena energía.":
+    - paragraph: Dos esteticistas / Un mismo espacio
+    - heading "Piel suave. Buena energía." [level=1]
+    - paragraph: Servicios profesionales de depilación con cera, cejas y más, en un espacio limpio, cómodo y acogedor.
+    - link "Reservar cita":
+      - /url: https://google.com
+  - region "Depilación + cejas":
+    - paragraph: Nuestros servicios
+    - heading "Depilación + cejas" [level=2]
+    - paragraph: Piel suave, resultados impecables, siempre.
+    - list:
+      - listitem:
+        - heading "Depilación brasileña" [level=3]
+      - listitem:
+        - heading "Axilas" [level=3]
+      - listitem:
+        - heading "Depilación y tinte de cejas" [level=3]
+      - listitem:
+        - heading "Brazo completo" [level=3]
+      - listitem:
+        - heading "Piernas completas" [level=3]
+      - listitem:
+        - heading "Depilación de cuerpo completo" [level=3]
+  - region "Dos chicas. Una misma visión.":
+    - img "Las dos esteticistas detrás de Bare Skin Co y Cherry Glow Studio, espalda con espalda"
+    - paragraph: Sobre nosotras
+    - heading "Dos chicas. Una misma visión." [level=2]
+    - paragraph: "Somos dos esteticistas con licencia que compartimos la pasión de ayudarte a sentirte con confianza en tu piel. Cada una tiene su propio estilo, pero nos une el mismo objetivo: brindarte una experiencia cómoda, resultados suaves y un espacio donde siempre te sientas a gusto."
+    - paragraph: Conócenos
+    - list "Conócenos":
+      - listitem:
+        - link "Bare Skin Co":
+          - /url: "#"
+      - listitem:
+        - link "Cherry Glow Studio":
+          - /url: "#"
+  - region "Por qué elegirnos":
+    - heading "Por qué elegirnos" [level=2]
+    - list:
+      - listitem:
+        - paragraph: Prácticas limpias y seguras
+      - listitem:
+        - paragraph: Un espacio cómodo y acogedor
+      - listitem:
+        - paragraph: Resultados de calidad que duran
+      - listitem:
+        - paragraph: Dos profesionales, más flexibilidad
+- contentinfo:
+  - paragraph: Bare Skin Co Cherry Glow Studio
+  - link "Reservar cita":
+    - /url: https://google.com
+  - list:
+    - listitem:
+      - button "Síguenos en Instagram"
+    - listitem:
+      - button "Síguenos en TikTok"
+  - list:
+    - listitem: Atendemos East y West Dundee
+    - listitem: Depilación + cejas
+    - listitem: Se habla español

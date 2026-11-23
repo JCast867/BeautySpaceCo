@@ -57,13 +57,17 @@ export function Vision() {
 					</p>
 					{/*
 					 * Each name opens that esthetician's part of the Meet us page.
-					 * Both stay on one line, shrinking on narrow phones. The links'
+					 * Both stay on one line, shrinking on narrow phones and again
+					 * where this text shares the row with the photo. If they
+					 * still can't fit (someone widens the letter spacing, or the
+					 * script fonts fail to load), each name wraps inside its own
+					 * column, so the divider stays between them. The links'
 					 * negative margin keeps the divider short while their padding
 					 * keeps the tap target tall.
 					 */}
 					<ul
 						aria-labelledby="vision-meet"
-						className="mt-2 flex items-center text-[clamp(1.125rem,6vw,1.75rem)] leading-none whitespace-nowrap sm:text-4xl/none"
+						className="mt-2 flex items-center text-[clamp(1.125rem,6vw,1.75rem)] leading-none sm:text-4xl/none lg:text-[clamp(1.75rem,calc(4.5vw-1.125rem),2.25rem)]"
 					>
 						<li className="pr-3 font-birthstone sm:pr-5">
 							<a

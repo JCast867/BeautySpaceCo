@@ -113,11 +113,17 @@ export function SocialMenu({ placement, className = "" }: SocialMenuProps) {
 							<Icon />
 						</button>
 
-						{/* unfolds out of the bar like the mobile menu's sheet */}
+						{/*
+						 * Unfolds out of the bar like the mobile menu's sheet. It is
+						 * never wider than the screen: if the script fonts fail to
+						 * load, the wider fallback font makes the names wrap instead
+						 * of pushing the card off the edge. Closed cards still take
+						 * up room, so this matters even before one opens.
+						 */}
 						<div
 							id={cardId}
 							inert={!isOpen}
-							className={`absolute z-10 w-max rounded-2xl border border-espresso/10 bg-primary px-5 py-1.5 text-espresso transition-[clip-path,opacity,visibility] motion-reduce:transition-none ${look.card} ${
+							className={`absolute z-10 w-max max-w-[calc(100vw-1rem)] rounded-2xl border border-espresso/10 bg-primary px-5 py-1.5 text-espresso transition-[clip-path,opacity,visibility] motion-reduce:transition-none ${look.card} ${
 								isOpen
 									? "visible opacity-100 duration-500 ease-glide [clip-path:inset(0_0_0_0)]"
 									: `invisible opacity-0 duration-200 ease-out ${look.folded}`
@@ -140,7 +146,7 @@ export function SocialMenu({ placement, className = "" }: SocialMenuProps) {
 											className="group/profile flex items-center justify-between gap-10 rounded-sm py-3.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-espresso"
 										>
 											<span
-												className={`text-[1.75rem] leading-none whitespace-nowrap underline decoration-transparent decoration-1 underline-offset-8 transition-colors duration-300 ease-glide group-hover/profile:decoration-espresso motion-reduce:transition-none ${font}`}
+												className={`text-[1.75rem] leading-none underline decoration-transparent decoration-1 underline-offset-8 transition-colors duration-300 ease-glide group-hover/profile:decoration-espresso motion-reduce:transition-none ${font}`}
 											>
 												{name}
 											</span>

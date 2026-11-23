@@ -15,8 +15,12 @@ export function Footer() {
 		<footer className="bg-neutral-900 text-primary">
 			<div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-16 lg:py-10">
 				<div className="flex flex-col items-center gap-8 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
-					{/* the same signature pair as the about section, without links */}
-					<p className="flex items-center text-[clamp(1.25rem,7vw,1.75rem)] leading-none whitespace-nowrap sm:text-3xl/none lg:justify-self-start">
+					{/*
+					 * The same signature pair as the about section, without links.
+					 * Like there, each name wraps inside its own column if the
+					 * pair can't fit on one line.
+					 */}
+					<p className="flex items-center text-[clamp(1.25rem,7vw,1.75rem)] leading-none sm:text-3xl/none lg:justify-self-start">
 						<span className="pr-4 font-birthstone sm:pr-5">
 							Bare Skin Co
 						</span>

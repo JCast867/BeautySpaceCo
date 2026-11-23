@@ -104,7 +104,8 @@ export function MobileMenu({
 
 				{/*
 				 * The same signature pair as the about section, each name over its
-				 * own profiles. There's room here, so no dropdown is needed.
+				 * own profiles. There's room here, so no dropdown is needed. Like
+				 * there, a name wraps inside its column if the pair can't fit.
 				 */}
 				<ul
 					style={{ transitionDelay: riseDelay(links.length) }}
@@ -116,7 +117,7 @@ export function MobileMenu({
 							className="border-espresso/15 pr-3 not-first:border-l not-first:pl-3 sm:pr-5 sm:not-first:pl-5"
 						>
 							<p
-								className={`text-[clamp(1.125rem,6vw,1.75rem)] leading-none whitespace-nowrap ${font}`}
+								className={`text-[clamp(1.125rem,6vw,1.75rem)] leading-none ${font}`}
 							>
 								{name}
 							</p>
