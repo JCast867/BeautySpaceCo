@@ -67,5 +67,16 @@
 		"area": "Serving East & West Dundee",
 		"services": "Waxing + brows",
 		"language": "Se habla español"
+	},
+	"notFound": {
+		"issue": "Vol. 1 No. 404",
+		"dateline": "East Dundee, IL",
+		"status": "Page not found",
+		"headingFirst": "Wrong page.",
+		"headingSecond": "Right place.",
+		"description": "This page doesn't exist. The link may be out of date or mistyped.",
+		"home": "Back to home",
+		"imageAlt": "The two estheticians behind Bare Skin Co and Cherry Glow Studio, reading a newspaper together",
+		"caption": "We checked every page."
 	}
 }

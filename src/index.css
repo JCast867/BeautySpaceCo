@@ -13,6 +13,41 @@
 	/* Quick start, long soft settle: the curve for anything arriving */
 	--ease-glide: cubic-bezier(0.22, 1, 0.36, 1);
 
+	/*
+	 * The not-found page's entrance: its newspaper strip prints left to
+	 * right, then each headline line rises up into place from its own
+	 * baseline. Both only clip while they play ("backwards" drops the
+	 * clip once they finish), so accents like the Á in PÁGINA never get
+	 * cut off.
+	 */
+	--animate-print: print 1.1s var(--ease-glide) backwards;
+	--animate-rise: rise 0.9s var(--ease-glide) backwards;
+
+	@keyframes print {
+		from {
+			clip-path: inset(0 100% 0 0);
+		}
+		to {
+			clip-path: inset(0);
+		}
+	}
+
+	/*
+	 * The clip's bottom edge rises with the line, so it reads as a fixed
+	 * mask. Its top edge starts flush with the line, or an accent sticking
+	 * up past it would show before the line does.
+	 */
+	@keyframes rise {
+		from {
+			translate: 0 100%;
+			clip-path: inset(0 -0.25em 100% -0.25em);
+		}
+		to {
+			translate: 0 0;
+			clip-path: inset(-0.25em);
+		}
+	}
+
 	/* Fonts are loaded from Google Fonts in index.html */
 	--font-didone: "Antic Didone", ui-serif, Georgia, serif;
 	--font-birthstone: "Birthstone", cursive;

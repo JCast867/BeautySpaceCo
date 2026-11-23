@@ -1,20 +1,22 @@
-import { createBrowserRouter } from "react-router";
+import type { RouteObject } from "react-router";
 
 import { Layout } from "../components/Layout.tsx";
-import { initializeLanguage } from "../locales/bootstrap.ts";
 import { Home } from "../pages/Home.tsx";
+import { NotFound } from "../pages/NotFound.tsx";
 
-// Set the initial URL before the router reads it.
-initializeLanguage();
-
-const children = [
+/**
+ * The same pages in both languages: English at /, Spanish under /es.
+ * Netlify only knows about real files, so each page added here also needs
+ * a rule in netlify.toml. src/tests/notFound.test.mts checks that they
+ * match.
+ */
+const children: RouteObject[] = [
 	{ index: true, Component: Home },
-	{ path: "services" },
-	{ path: "about" },
-	{ path: "book" },
+	// Any other address, like an old link or a typo.
+	{ path: "*", Component: NotFound },
 ];
 
-export const router = createBrowserRouter([
+export const routes: RouteObject[] = [
 	{
 		path: "/",
 		Component: Layout,
@@ -25,4 +27,4 @@ export const router = createBrowserRouter([
 		Component: Layout,
 		children,
 	},
-]);
+];

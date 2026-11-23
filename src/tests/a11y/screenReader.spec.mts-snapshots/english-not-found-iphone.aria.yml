@@ -1,0 +1,31 @@
+- banner:
+  - button "Open Menu"
+  - link "Beauty Space Co":
+    - /url: /
+  - link "Book":
+    - /url: https://google.com
+- main:
+  - region "Wrong page. Right place.":
+    - paragraph: /Vol\. 1 No\. \d+ Page not found/
+    - heading "Wrong page. Right place." [level=1]
+    - paragraph: This page doesn't exist. The link may be out of date or mistyped.
+    - link "Back to home":
+      - /url: /
+    - link "Book now":
+      - /url: https://google.com
+    - figure "We checked every page.":
+      - img "The two estheticians behind Bare Skin Co and Cherry Glow Studio, reading a newspaper together"
+      - text: ""
+- contentinfo:
+  - paragraph: Bare Skin Co Cherry Glow Studio
+  - link "Book now":
+    - /url: https://google.com
+  - list:
+    - listitem:
+      - button "Follow us on Instagram"
+    - listitem:
+      - button "Follow us on TikTok"
+  - list:
+    - listitem: Serving East & West Dundee
+    - listitem: Waxing + brows
+    - listitem: Se habla español

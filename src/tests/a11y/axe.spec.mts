@@ -2,7 +2,7 @@ import { AxeBuilder } from "@axe-core/playwright";
 import type { Page } from "@playwright/test";
 import { expect, test } from "@playwright/test";
 
-import { enterState, homePages, openPage, pageStates } from "./pages.mts";
+import { enterState, openPage, sitePages, statesFor } from "./pages.mts";
 
 /** Every axe rule that maps to WCAG 2.0, 2.1 or 2.2 at level A or AA. */
 const wcagAA = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
@@ -46,13 +46,13 @@ async function audit(page: Page) {
 	return summarize(violations);
 }
 
-for (const { language, path } of homePages) {
-	test.describe(`${language} home page`, () => {
+for (const sitePage of sitePages) {
+	test.describe(sitePage.name, () => {
 		test.beforeEach(async ({ page }) => {
-			await openPage(page, path);
+			await openPage(page, sitePage.path);
 		});
 
-		for (const state of pageStates) {
+		for (const state of statesFor(sitePage)) {
 			test(state.name, async ({ page }) => {
 				await enterState(page, state);
 				expect(await audit(page)).toEqual([]);
