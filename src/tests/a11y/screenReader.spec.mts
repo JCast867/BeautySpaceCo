@@ -1,11 +1,17 @@
 import { expect, test } from "@playwright/test";
 
-import { homePages, openPage } from "./pages.mts";
+import { openPage, sitePages } from "./pages.mts";
 
-for (const { language, path } of homePages) {
-	test.describe(`${language} home page`, () => {
+for (const { name, outline, path, title } of sitePages) {
+	test.describe(name, () => {
 		test.beforeEach(async ({ page }) => {
 			await openPage(page, path);
+		});
+
+		// WCAG 2.4.2 Page Titled: the tab says which page this is, and
+		// it's the first thing a screen reader announces when it opens.
+		test("has a title that names the page", async ({ page }) => {
+			await expect(page).toHaveTitle(title);
 		});
 
 		// What a screen reader gets: every landmark, heading, link, button
@@ -17,7 +23,7 @@ for (const { language, path } of homePages) {
 			page,
 		}, testInfo) => {
 			await expect(page.locator("body")).toMatchAriaSnapshot({
-				name: `${language.toLowerCase()}-${testInfo.project.name}.aria.yml`,
+				name: `${outline}-${testInfo.project.name}.aria.yml`,
 			});
 		});
 	});

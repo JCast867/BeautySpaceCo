@@ -2,7 +2,19 @@
 command = "pnpm run build"
 publish = "dist"
 
+# Netlify serves the files in dist, and the app draws every page from
+# index.html. Each page in src/routes/routes.ts needs a rule here so it
+# loads with a 200 status (/ is index.html itself, so it needs none).
+# src/tests/notFound.test.mts checks that the two lists match.
+[[redirects]]
+from = "/es"
+to = "/index.html"
+status = 200
+
+# Any other address still loads the app, which shows its not-found page,
+# but with a 404 status so search engines drop it. Keep this rule last:
+# Netlify uses the first rule that matches.
 [[redirects]]
 from = "/*"
 to = "/index.html"
-status = 200
+status = 404

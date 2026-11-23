@@ -1,11 +1,54 @@
 import type { Locator, Page } from "@playwright/test";
 import { expect, test } from "@playwright/test";
 
-/** The home page in each language the site is published in. */
-export const homePages = [
-	{ language: "English", path: "/" },
-	{ language: "Spanish", path: "/es" },
-] as const;
+type SitePage = {
+	/** Names the page in test titles. */
+	name: string;
+	/** Starts the file name of its saved screen reader outline. */
+	outline: string;
+	path: string;
+	/** What the browser tab says, the first thing a screen reader announces. */
+	title: string | RegExp;
+	/**
+	 * Whether to also test the header's and footer's menus open here.
+	 * They're the same on every page, so the home pages cover them.
+	 */
+	opensMenus: boolean;
+};
+
+/** Every page the site publishes, in each language. */
+export const sitePages: readonly SitePage[] = [
+	{
+		name: "English home page",
+		outline: "english",
+		path: "/",
+		// Loose, so a more descriptive title for search results still passes.
+		title: /Beauty ?Space ?Co/u,
+		opensMenus: true,
+	},
+	{
+		name: "Spanish home page",
+		outline: "spanish",
+		path: "/es",
+		title: /Beauty ?Space ?Co/u,
+		opensMenus: true,
+	},
+	// Any address without a page of its own, like an old link or a typo.
+	{
+		name: "English not-found page",
+		outline: "english-not-found",
+		path: "/this-page-does-not-exist",
+		title: "Page not found | Beauty Space Co",
+		opensMenus: false,
+	},
+	{
+		name: "Spanish not-found page",
+		outline: "spanish-not-found",
+		path: "/es/esta-pagina-no-existe",
+		title: "Página no encontrada | Beauty Space Co",
+		opensMenus: false,
+	},
+];
 
 /** Requests for the site's web fonts, which come from Google Fonts. */
 export const googleFonts = /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\//u;
@@ -98,6 +141,13 @@ export const pageStates: readonly PageState[] = [
 				.getByRole("button", { name: "Instagram", exact: false }),
 	},
 ];
+
+/** The states to test a page in: only at rest, unless it tests the menus too. */
+export function statesFor({ opensMenus }: SitePage) {
+	return opensMenus
+		? pageStates
+		: pageStates.filter((state) => state.trigger === undefined);
+}
 
 /**
  * Puts the page into a state, skipping the test when this screen size

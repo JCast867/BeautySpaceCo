@@ -9,6 +9,12 @@ export function useLanguage(): Language {
 	return useMatch("/es/*") ? "es" : "en";
 }
 
+/** Each language's home page; every other page in it lives under this. */
+export const homePaths = {
+	en: "/",
+	es: "/es",
+} satisfies Record<Language, string>;
+
 export const translations = {
 	en,
 	es,

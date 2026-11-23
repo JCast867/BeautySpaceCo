@@ -2,7 +2,7 @@
 import { AxeBuilder } from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-import { homePages, openPage } from "./pages.mts";
+import { openPage, sitePages } from "./pages.mts";
 
 /**
  * Finds the lowest contrast between the text color and any pixel of a
@@ -75,8 +75,8 @@ async function lowestContrast({ png, color }: { png: string; color: string }) {
 	return lowest;
 }
 
-for (const { language, path } of homePages) {
-	test.describe(`${language} home page`, () => {
+for (const { name, path } of sitePages) {
+	test.describe(name, () => {
 		test.beforeEach(async ({ page }) => {
 			await openPage(page, path);
 		});

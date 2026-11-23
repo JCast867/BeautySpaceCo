@@ -67,5 +67,16 @@
 		"area": "Atendemos East y West Dundee",
 		"services": "Depilación + cejas",
 		"language": "Se habla español"
+	},
+	"notFound": {
+		"issue": "Vol. 1 Núm. 404",
+		"dateline": "East Dundee, IL",
+		"status": "Página no encontrada",
+		"headingFirst": "Página equivocada.",
+		"headingSecond": "Lugar correcto.",
+		"description": "Esta página no existe. Puede que el enlace esté desactualizado o mal escrito.",
+		"home": "Volver al inicio",
+		"imageAlt": "Las dos esteticistas detrás de Bare Skin Co y Cherry Glow Studio, leyendo juntas un periódico",
+		"caption": "Revisamos cada página."
 	}
 }

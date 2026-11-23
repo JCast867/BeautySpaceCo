@@ -1,0 +1,46 @@
+- banner:
+  - navigation "Navegación principal":
+    - list:
+      - listitem:
+        - link "Inicio":
+          - /url: "#"
+      - listitem:
+        - link "Servicios":
+          - /url: "#services"
+      - listitem:
+        - link "Nosotros":
+          - /url: "#about"
+  - link "Beauty Space Co":
+    - /url: /
+  - list:
+    - listitem:
+      - button "Síguenos en Instagram"
+    - listitem:
+      - button "Síguenos en TikTok"
+  - link "Reservar cita":
+    - /url: https://google.com
+- main:
+  - region "Página equivocada. Lugar correcto.":
+    - paragraph: /Vol\. 1 Núm\. \d+ East Dundee, IL Página no encontrada/
+    - heading "Página equivocada. Lugar correcto." [level=1]
+    - paragraph: Esta página no existe. Puede que el enlace esté desactualizado o mal escrito.
+    - link "Volver al inicio":
+      - /url: /es
+    - link "Reservar cita":
+      - /url: https://google.com
+    - figure "Revisamos cada página.":
+      - img "Las dos esteticistas detrás de Bare Skin Co y Cherry Glow Studio, leyendo juntas un periódico"
+      - text: ""
+- contentinfo:
+  - paragraph: Bare Skin Co Cherry Glow Studio
+  - link "Reservar cita":
+    - /url: https://google.com
+  - list:
+    - listitem:
+      - button "Síguenos en Instagram"
+    - listitem:
+      - button "Síguenos en TikTok"
+  - list:
+    - listitem: Atendemos East y West Dundee
+    - listitem: Depilación + cejas
+    - listitem: Se habla español

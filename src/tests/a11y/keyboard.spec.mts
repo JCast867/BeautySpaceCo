@@ -2,7 +2,7 @@
 import type { Page } from "@playwright/test";
 import { expect, test } from "@playwright/test";
 
-import { homePages, openPage } from "./pages.mts";
+import { openPage, sitePages } from "./pages.mts";
 
 /**
  * The key that moves focus to the next link or button. Safari's Tab only
@@ -69,8 +69,8 @@ function findUnreached() {
 		.map((control) => control.outerHTML.slice(0, 120));
 }
 
-for (const { language, path } of homePages) {
-	test.describe(`${language} home page`, () => {
+for (const { name, path, opensMenus } of sitePages) {
+	test.describe(name, () => {
 		test.beforeEach(async ({ page }) => {
 			await openPage(page, path);
 		});
@@ -103,102 +103,107 @@ for (const { language, path } of homePages) {
 			).toEqual([]);
 		});
 
-		// WCAG 2.1.1 Keyboard, 2.4.3 Focus Order and 4.1.2 Name, Role, Value:
-		// Enter opens the menu and says so, Tab stays in the menu instead of
-		// wandering into the page behind it, and Escape closes it and puts
-		// focus back on the button.
-		test("the mobile menu works with the keyboard", async ({
-			page,
-			browserName,
-		}) => {
-			const button = page.locator('[aria-controls="mobile-menu"]');
-			test.skip(
-				!(await button.isVisible()),
-				"The menu button only shows on small screens.",
-			);
-			const menu = page.locator("#mobile-menu");
-
-			await button.focus();
-			await page.keyboard.press("Enter");
-			await expect(button).toHaveAttribute("aria-expanded", "true");
-			await expect(menu).toBeVisible();
-
-			// Enough presses to go around the open menu more than once.
-			const places = [];
-			for (let press = 0; press < 25; press += 1) {
-				await page.keyboard.press(nextKey(browserName));
-				places.push(
-					await page.evaluate(() => {
-						const element = document.activeElement;
-						if (element === null || element === document.body) {
-							return "browser";
-						}
-						if (element.closest("#mobile-menu") !== null) {
-							return "menu";
-						}
-						return element.closest("header") === null
-							? "page behind the menu"
-							: "header";
-					}),
-				);
-			}
-			expect(places).toContain("menu");
-			expect(places).not.toContain("page behind the menu");
-
-			await page.keyboard.press("Escape");
-			await expect(button).toHaveAttribute("aria-expanded", "false");
-			await expect(button).toBeFocused();
-			await expect(menu).toBeHidden();
-		});
-
-		for (const { place, landmark } of [
-			{ place: "header", landmark: "banner" },
-			{ place: "footer", landmark: "contentinfo" },
-		] as const) {
-			// Same criteria as the mobile menu, for each platform's card.
-			// Both Enter and Space open a button.
-			test(`the ${place}'s social cards work with the keyboard`, async ({
+		// The header and footer are the same on every page, so the home
+		// pages are enough to test their menus.
+		if (opensMenus) {
+			// WCAG 2.1.1 Keyboard, 2.4.3 Focus Order and 4.1.2 Name, Role, Value:
+			// Enter opens the menu and says so, Tab stays in the menu instead of
+			// wandering into the page behind it, and Escape closes it and puts
+			// focus back on the button.
+			test("the mobile menu works with the keyboard", async ({
 				page,
 				browserName,
 			}) => {
-				const triggers = await page
-					.getByRole(landmark)
-					.locator(
-						'button[aria-controls]:not([aria-controls="mobile-menu"])',
-					)
-					.all();
+				const button = page.locator('[aria-controls="mobile-menu"]');
 				test.skip(
-					!(await triggers[0]?.isVisible()),
-					"The header's social icons hide on small screens.",
+					!(await button.isVisible()),
+					"The menu button only shows on small screens.",
 				);
+				const menu = page.locator("#mobile-menu");
 
-				for (const trigger of triggers) {
-					const cardId = await trigger.getAttribute("aria-controls");
-					const firstLink = page
-						.locator(`[id="${cardId ?? ""}"]`)
-						.getByRole("link")
-						.first();
+				await button.focus();
+				await page.keyboard.press("Enter");
+				await expect(button).toHaveAttribute("aria-expanded", "true");
+				await expect(menu).toBeVisible();
 
-					for (const key of ["Enter", "Space"]) {
-						await trigger.focus();
-						await page.keyboard.press(key);
-						await expect(trigger).toHaveAttribute(
-							"aria-expanded",
-							"true",
-						);
-
-						await page.keyboard.press(nextKey(browserName));
-						await expect(firstLink).toBeFocused();
-
-						await page.keyboard.press("Escape");
-						await expect(trigger).toHaveAttribute(
-							"aria-expanded",
-							"false",
-						);
-						await expect(trigger).toBeFocused();
-					}
+				// Enough presses to go around the open menu more than once.
+				const places = [];
+				for (let press = 0; press < 25; press += 1) {
+					await page.keyboard.press(nextKey(browserName));
+					places.push(
+						await page.evaluate(() => {
+							const element = document.activeElement;
+							if (element === null || element === document.body) {
+								return "browser";
+							}
+							if (element.closest("#mobile-menu") !== null) {
+								return "menu";
+							}
+							return element.closest("header") === null
+								? "page behind the menu"
+								: "header";
+						}),
+					);
 				}
+				expect(places).toContain("menu");
+				expect(places).not.toContain("page behind the menu");
+
+				await page.keyboard.press("Escape");
+				await expect(button).toHaveAttribute("aria-expanded", "false");
+				await expect(button).toBeFocused();
+				await expect(menu).toBeHidden();
 			});
+
+			for (const { place, landmark } of [
+				{ place: "header", landmark: "banner" },
+				{ place: "footer", landmark: "contentinfo" },
+			] as const) {
+				// Same criteria as the mobile menu, for each platform's card.
+				// Both Enter and Space open a button.
+				test(`the ${place}'s social cards work with the keyboard`, async ({
+					page,
+					browserName,
+				}) => {
+					const triggers = await page
+						.getByRole(landmark)
+						.locator(
+							'button[aria-controls]:not([aria-controls="mobile-menu"])',
+						)
+						.all();
+					test.skip(
+						!(await triggers[0]?.isVisible()),
+						"The header's social icons hide on small screens.",
+					);
+
+					for (const trigger of triggers) {
+						const cardId =
+							await trigger.getAttribute("aria-controls");
+						const firstLink = page
+							.locator(`[id="${cardId ?? ""}"]`)
+							.getByRole("link")
+							.first();
+
+						for (const key of ["Enter", "Space"]) {
+							await trigger.focus();
+							await page.keyboard.press(key);
+							await expect(trigger).toHaveAttribute(
+								"aria-expanded",
+								"true",
+							);
+
+							await page.keyboard.press(nextKey(browserName));
+							await expect(firstLink).toBeFocused();
+
+							await page.keyboard.press("Escape");
+							await expect(trigger).toHaveAttribute(
+								"aria-expanded",
+								"false",
+							);
+							await expect(trigger).toBeFocused();
+						}
+					}
+				});
+			}
 		}
 	});
 }

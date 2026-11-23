@@ -3,9 +3,9 @@ import { expect, test } from "@playwright/test";
 import {
 	enterState,
 	googleFonts,
-	homePages,
 	openPage,
-	pageStates,
+	sitePages,
+	statesFor,
 } from "./pages.mts";
 
 /**
@@ -82,9 +82,10 @@ function sidewaysScroll() {
 	return root.scrollWidth - root.clientWidth;
 }
 
-for (const { language, path } of homePages) {
-	test.describe(`${language} home page`, () => {
-		for (const state of pageStates) {
+for (const sitePage of sitePages) {
+	const { name, path } = sitePage;
+	test.describe(name, () => {
+		for (const state of statesFor(sitePage)) {
 			test.describe(state.name, () => {
 				test.beforeEach(async ({ page }) => {
 					await openPage(page, path);
