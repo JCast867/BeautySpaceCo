@@ -1,0 +1,14 @@
+# Beauty Space Co
+
+> Beauty Space Co is a shared space for two licensed estheticians, Bare Skin Co and Cherry Glow Studio, offering professional waxing and brow services in East and West Dundee, Illinois. Se habla español.
+
+- Services: Brazilian, underarms, brow wax + tint, full arm, full legs, and full body waxing.
+- Studios: Bare Skin Co and Cherry Glow Studio, each run by one of the two estheticians, working out of the same space.
+- Service area: East and West Dundee, Illinois.
+- Languages: English and Spanish.
+- What they focus on: clean and safe practices, a comfortable and welcoming space, and quality results that last. Having two professionals means more flexibility for clients.
+
+## Pages
+
+- [Home](https://beautyspaceco.netlify.app/): Services, an introduction to the two estheticians, and why to choose them.
+- [Inicio (Spanish)](https://beautyspaceco.netlify.app/es): The same page in Spanish.
