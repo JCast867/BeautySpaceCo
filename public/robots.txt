@@ -1,0 +1,16 @@
+# -- Blocking AI training models --
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: Amazonbot
+Disallow: /
+
+# -- Everything else is okay --
+User-agent: *
+Allow: /
+
+Sitemap: https://beautyspaceco.netlify.app/sitemap.xml
