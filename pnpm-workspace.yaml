@@ -8,3 +8,11 @@ minimumReleaseAgeExclude:
     - vitest@5.1.2
     - "@types/node@26.6.11"
     - "@types/react@19.3.3"
+    - "@oxlint-tsgolint/darwin-arm64@7.0.2009"
+    - "@oxlint-tsgolint/darwin-x64@7.0.2009"
+    - "@oxlint-tsgolint/linux-arm64@7.0.2009"
+    - "@oxlint-tsgolint/linux-x64@7.0.2009"
+    - "@oxlint-tsgolint/win32-arm64@7.0.2009"
+    - "@oxlint-tsgolint/win32-x64@7.0.2009"
+    - oxlint-tsgolint@7.0.2009
+    - vite@8.4.0
