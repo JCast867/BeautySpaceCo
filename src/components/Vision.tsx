@@ -1,10 +1,7 @@
-import { Link } from "react-router";
-
 import visionSmall from "../assets/vision-640.webp";
 import visionMedium from "../assets/vision-960.webp";
 import visionLarge from "../assets/vision-1280.webp";
 import visionExtraLarge from "../assets/vision-1920.webp";
-import { meetLinks } from "../config/site.ts";
 import { translations, useLanguage } from "../locales/language.ts";
 
 export function Vision() {
@@ -51,65 +48,27 @@ export function Vision() {
 					<p className="mt-5 max-w-md text-base/relaxed text-primary/80">
 						{text.description}
 					</p>
-					<p
-						id="vision-meet"
-						className="mt-8 font-didone text-base text-primary/75"
-					>
-						{text.meet}
-					</p>
 					{/*
-					 * Each name opens that esthetician's part of the Meet us page.
-					 * Both stay on one line, shrinking on narrow phones and again
-					 * where this text shares the row with the photo. If they
-					 * still can't fit (someone widens the letter spacing, or the
+					 * The two studios, side by side at the same size. Both stay
+					 * on one line, shrinking on narrow phones and again where
+					 * this text shares the row with the photo. If they still
+					 * can't fit (someone widens the letter spacing, or the
 					 * script fonts fail to load), each name wraps inside its own
-					 * column, so the divider stays between them. The links'
-					 * negative margin keeps the divider short while their padding
-					 * keeps the tap target tall.
+					 * column, so the divider stays between them. The padding
+					 * keeps the divider as tall as it was when the names were
+					 * links; they become links again once each studio has its
+					 * own page.
 					 */}
-					<ul
-						aria-labelledby="vision-meet"
-						className="mt-2 flex items-center text-[clamp(1.125rem,6vw,1.75rem)] leading-none sm:text-4xl/none lg:text-[clamp(1.75rem,calc(4.5vw-1.125rem),2.25rem)]"
-					>
-						<li className="pr-3 font-birthstone sm:pr-5">
-							<Link
-								to={meetLinks.bareSkinCo}
-								className="group/name -my-1.5 inline-flex items-baseline gap-1.5 rounded-sm py-2.5 underline decoration-transparent decoration-1 underline-offset-10 transition-colors duration-300 ease-glide hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none sm:gap-2"
-							>
-								Bare Skin Co
-								<LinkArrow />
-							</Link>
+					<ul className="mt-8 flex items-center text-[clamp(1.125rem,6vw,1.75rem)] leading-none sm:text-4xl/none lg:text-[clamp(1.75rem,calc(4.5vw-1.125rem),2.25rem)]">
+						<li className="py-1 pr-3 font-birthstone sm:pr-5">
+							Bare Skin Co
 						</li>
-						<li className="border-l border-primary/30 pl-3 font-doulaise sm:pl-5">
-							<Link
-								to={meetLinks.cherryGlowStudio}
-								className="group/name -my-1.5 inline-flex items-baseline gap-1.5 rounded-sm py-2.5 underline decoration-transparent decoration-1 underline-offset-10 transition-colors duration-300 ease-glide hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none sm:gap-2"
-							>
-								Cherry Glow Studio
-								<LinkArrow />
-							</Link>
+						<li className="border-l border-primary/30 py-1 pl-3 font-doulaise sm:pl-5">
+							Cherry Glow Studio
 						</li>
 					</ul>
 				</div>
 			</div>
 		</section>
-	);
-}
-
-/** Thin arrow after each name; it nudges forward like the hero's Book now. */
-function LinkArrow() {
-	return (
-		<svg
-			viewBox="0 0 16 16"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="1.25"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-			aria-hidden="true"
-			className="size-3 shrink-0 transition-[translate] duration-300 ease-glide motion-safe:group-hover/name:translate-x-1 motion-safe:group-focus-visible/name:translate-x-1 motion-reduce:transition-none sm:size-4"
-		>
-			<path d="M1.5 8h12M10 4.5 13.5 8 10 11.5" />
-		</svg>
 	);
 }

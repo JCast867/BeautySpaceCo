@@ -1,6 +1,25 @@
+"$schema" = "https://open-api.netlify.com/netlify.schema.json"
+
+# The unit tests run first, so a failing test stops the deploy and the
+# previous one stays live.
 [build]
-command = "pnpm run build"
+command = "pnpm test && pnpm run build"
 publish = "dist"
+
+[[headers]]
+for = "/assets/*"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Every response, including the files under /assets/. Cache-Control stays
+# in the rule above, so the two rules never set the same header.
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
 
 # Netlify serves the files in dist, and the app draws every page from
 # index.html. Each page in src/routes/routes.ts needs a rule here so it

@@ -48,14 +48,9 @@
     - paragraph: About us
     - heading "Two girls. Same vision." [level=2]
     - paragraph: We're two licensed estheticians with a shared passion for helping you feel confident in your skin. Each of us brings our own style, but we're united by the same goal — to give you a comfortable experience, smooth results, and a space where you always feel at ease.
-    - paragraph: Get to know us
-    - list "Get to know us":
-      - listitem:
-        - link "Bare Skin Co":
-          - /url: "#"
-      - listitem:
-        - link "Cherry Glow Studio":
-          - /url: "#"
+    - list:
+      - listitem: Bare Skin Co
+      - listitem: Cherry Glow Studio
   - region "Why choose us":
     - heading "Why choose us" [level=2]
     - list:
