@@ -6,14 +6,13 @@ export const meetLinks = {
 	cherryGlowStudio: "cherry-glow",
 };
 
-// Replace with each esthetician's own profiles when they're ready.
 export const socialLinks = {
 	bareSkinCo: {
-		instagram: "https://www.instagram.com/",
-		tiktok: "https://www.tiktok.com/",
+		instagram: "https://www.instagram.com/_thebareskinco ",
+		tiktok: "https://www.tiktok.com/@_thebareskinco",
 	},
 	cherryGlowStudio: {
-		instagram: "https://www.instagram.com/",
-		tiktok: "https://www.tiktok.com/",
+		instagram: "https://www.instagram.com/cherryglow.studioo",
+		tiktok: "https://www.tiktok.com/@cherryy_glow_studio",
 	},
 };

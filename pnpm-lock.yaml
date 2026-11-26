@@ -223,7 +223,7 @@ importers:
         specifier: ^4.11.0
         version: 4.11.0(oxlint@1.95.0(oxlint-tsgolint@7.0.2008))(tailwindcss@4.3.5)(typescript@6.0.3)
       oxc-transform-react:
-        specifier: ^0.156.0
+        specifier: 0.156.0
         version: 0.156.0
       oxfmt:
         specifier: ^0.80.0
