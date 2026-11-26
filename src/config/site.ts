@@ -1,14 +1,9 @@
 // Replace with the booking website when it is ready.
 export const bookingLink = "https://google.com";
 
-export const meetLinks = {
-	bareSkinCo: "bare-skin",
-	cherryGlowStudio: "cherry-glow",
-};
-
 export const socialLinks = {
 	bareSkinCo: {
-		instagram: "https://www.instagram.com/_thebareskinco ",
+		instagram: "https://www.instagram.com/_thebareskinco",
 		tiktok: "https://www.tiktok.com/@_thebareskinco",
 	},
 	cherryGlowStudio: {

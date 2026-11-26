@@ -7,8 +7,8 @@ import { NotFound } from "../pages/NotFound.tsx";
 /**
  * The same pages in both languages: English at /, Spanish under /es.
  * Netlify only knows about real files, so each page added here also needs
- * a rule in netlify.toml. src/tests/notFound.test.mts checks that they
- * match.
+ * a rule in netlify.toml, and an entry in public/sitemap.xml so search
+ * engines find it. src/tests/notFound.test.mts checks that all three match.
  */
 const children: RouteObject[] = [
 	{ index: true, Component: Home },

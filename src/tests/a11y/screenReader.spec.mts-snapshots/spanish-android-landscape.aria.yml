@@ -48,14 +48,9 @@
     - paragraph: Sobre nosotras
     - heading "Dos chicas. Una misma visión." [level=2]
     - paragraph: "Somos dos esteticistas con licencia que compartimos la pasión de ayudarte a sentirte con confianza en tu piel. Cada una tiene su propio estilo, pero nos une el mismo objetivo: brindarte una experiencia cómoda, resultados suaves y un espacio donde siempre te sientas a gusto."
-    - paragraph: Conócenos
-    - list "Conócenos":
-      - listitem:
-        - link "Bare Skin Co":
-          - /url: "#"
-      - listitem:
-        - link "Cherry Glow Studio":
-          - /url: "#"
+    - list:
+      - listitem: Bare Skin Co
+      - listitem: Cherry Glow Studio
   - region "Por qué elegirnos":
     - heading "Por qué elegirnos" [level=2]
     - list:

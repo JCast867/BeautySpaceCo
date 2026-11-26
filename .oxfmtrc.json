@@ -33,6 +33,7 @@
 		"dist",
 		"node_modules",
 		"pnpm-lock.yaml",
-		"**/*.aria.yml"
+		"**/*.aria.yml",
+		".agents/skills/netlify-*/**"
 	]
 }

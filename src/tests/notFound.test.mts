@@ -57,6 +57,71 @@ function netlifyRedirects(): Redirect[] {
 		}));
 }
 
+type SitemapEntry = {
+	loc: string;
+	/** The page's address in each language, keyed by hreflang. */
+	alternates: Record<string, string>;
+};
+
+/** The <url> entries in public/sitemap.xml, in file order. */
+function sitemapEntries(): SitemapEntry[] {
+	const xml = readFileSync(
+		new URL("../../public/sitemap.xml", import.meta.url),
+		"utf8",
+	);
+	return Array.from(
+		xml.matchAll(/<url>(.*?)<\/url>/gsu),
+		([, entry = ""]) => ({
+			loc: /<loc>([^<]*)<\/loc>/u.exec(entry)?.[1] ?? "",
+			alternates: Object.fromEntries(
+				Array.from(
+					entry.matchAll(/hreflang="([^"]*)" href="([^"]*)"/gu),
+					([, language = "", href = ""]): [string, string] => [
+						language,
+						href,
+					],
+				),
+			),
+		}),
+	);
+}
+
+/** Sorts sitemap entries by address, so the file's order doesn't matter. */
+function byLoc(a: SitemapEntry, b: SitemapEntry) {
+	return a.loc.localeCompare(b.loc);
+}
+
+/**
+ * The sitemap's full address, from the Sitemap line in public/robots.txt.
+ * The site's own address lives there, so the sitemap has to match it.
+ */
+function sitemapAddress() {
+	const robots = readFileSync(
+		new URL("../../public/robots.txt", import.meta.url),
+		"utf8",
+	);
+	const [, address = ""] = /^Sitemap:\s*(\S+)/mu.exec(robots) ?? [];
+	return new URL(address);
+}
+
+/** The English version of a page, like / for /es or /x for /es/x. */
+function englishPath(path: string) {
+	if (path === homePaths.es) {
+		return homePaths.en;
+	}
+	return path.startsWith(`${homePaths.es}/`)
+		? path.slice(homePaths.es.length)
+		: path;
+}
+
+/** The Spanish version of a page, like /es for / or /es/x for /x. */
+function spanishPath(path: string) {
+	const english = englishPath(path);
+	return english === homePaths.en
+		? homePaths.es
+		: `${homePaths.es}${english}`;
+}
+
 function render(path: string) {
 	return renderToStaticMarkup(
 		createElement(
@@ -165,4 +230,25 @@ test("netlify.toml loads every page with a 200 status and anything else with a 4
 		to: "/index.html",
 		status: 404,
 	});
+});
+
+// Search engines find pages through the sitemap, so it has to list exactly
+// the app's pages, at their full production addresses, each with its English
+// and Spanish versions. A listed address without a page loads with a 404.
+test("sitemap.xml lists every page with its English and Spanish versions", () => {
+	const sitemap = sitemapAddress();
+	expect(sitemap.pathname).toBe("/sitemap.xml");
+	const address = (path: string) => new URL(path, sitemap.origin).href;
+	expect(sitemapEntries().toSorted(byLoc)).toEqual(
+		pagePaths(routes)
+			.map((path) => ({
+				loc: address(path),
+				alternates: {
+					en: address(englishPath(path)),
+					es: address(spanishPath(path)),
+					"x-default": address(englishPath(path)),
+				},
+			}))
+			.toSorted(byLoc),
+	);
 });
