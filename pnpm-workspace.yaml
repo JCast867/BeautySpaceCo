@@ -1,0 +1,10 @@
+# Drops an entry from the list below once its version is no longer in
+# pnpm-lock.yaml, so the list doesn't keep growing with every update.
+minimumReleaseAgeExcludePrune: true
+
+minimumReleaseAgeExclude:
+    - "@vitest/mocker@5.1.2"
+    - "@vitest/spy@5.1.2"
+    - vitest@5.1.2
+    - "@types/node@26.6.11"
+    - "@types/react@19.3.3"

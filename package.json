@@ -22,28 +22,28 @@
 		"@tailwindcss/vite": "^4.3.5",
 		"react": "^19.3.1",
 		"react-dom": "^19.3.1",
-		"react-router": "^8.5.2",
+		"react-router": "^8.5.3",
 		"tailwindcss": "^4.3.5"
 	},
 	"devDependencies": {
-		"@axe-core/playwright": "^4.14.0",
+		"@axe-core/playwright": "^4.14.1",
 		"@playwright/test": "^1.65.1",
-		"@types/node": "^26.6.6",
-		"@types/react": "^19.3.0",
+		"@types/node": "^26.6.11",
+		"@types/react": "^19.3.3",
 		"@types/react-dom": "^19.3.0",
 		"@vitejs/plugin-react": "^6.3.0",
 		"eslint-plugin-better-tailwindcss": "^4.11.0",
-		"oxc-transform-react": "^0.156.0",
-		"oxfmt": "^0.79.0",
-		"oxlint": "^1.94.0",
+		"oxc-transform-react": "0.156.0",
+		"oxfmt": "^0.80.0",
+		"oxlint": "^1.95.0",
 		"oxlint-tsgolint": "^7.0.2008",
 		"typescript": "~6.0.3",
 		"vite": "^8.3.8",
-		"vitest": "^5.1.1"
+		"vitest": "^5.1.2"
 	},
 	"engines": {
 		"node": "^26.13.1",
-		"pnpm": "^12.21.0"
+		"pnpm": "^12.23.0"
 	},
-	"packageManager": "pnpm@12.21.0"
+	"packageManager": "pnpm@12.23.0"
 }
